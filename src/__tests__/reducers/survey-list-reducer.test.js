@@ -1,7 +1,7 @@
-import ticketListReducer from '../../reducers/ticket-list-reducer';
-import * as c from './../../actions/ActionTypes';
+import surveyListReducer from '../../reducers/survey-list-reducer';
+import * as c from '../../actions/ActionTypes';
 
-describe('ticketListReducer', () => {
+describe('surveyListReducer', () => {
 
   let action;
 
@@ -16,7 +16,7 @@ describe('ticketListReducer', () => {
     id: 2 }
   }
 
-  const ticketData = {
+  const surveyData = {
     names: 'Ryan & Aimen',
     location: '4b',
     issue: 'Redux action is not working correctly.',
@@ -24,19 +24,19 @@ describe('ticketListReducer', () => {
   };
 
   test('Should return default state if no action type is recognized', () => {
-    expect(ticketListReducer({}, { type: null })).toEqual({});
+    expect(surveyListReducer({}, { type: null })).toEqual({});
   });
 
-  test('Should successfully add new ticket data to masterTicketList', () => {
-    const { names, location, issue, id } = ticketData;
+  test('Should successfully add new survey data to masterSurveyList', () => {
+    const { names, location, issue, id } = surveyData;
     action = {
-      type: c.ADD_TICKET,
+      type: c.ADD_SURVEY,
       names: names,
       location: location,
       issue: issue,
       id: id
     };
-    expect(ticketListReducer({}, action)).toEqual({
+    expect(surveyListReducer({}, action)).toEqual({
       [id] : {
         names: names,
         location: location,
@@ -46,12 +46,12 @@ describe('ticketListReducer', () => {
     });
   });
 
-  test('Should successfully delete a ticket', () => {
+  test('Should successfully delete a survey', () => {
     action = {
-      type: c.DELETE_TICKET,
+      type: c.DELETE_SURVEY,
       id: 1
     };
-    expect(ticketListReducer(currentState, action)).toEqual({
+    expect(surveyListReducer(currentState, action)).toEqual({
       2: {names: 'Jasmine and Justine',
         location: '2a',
         issue: 'Reducer has side effects.',

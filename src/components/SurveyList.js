@@ -1,32 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Ticket from "./Ticket";
+import Survey from "./Survey";
 import { useSelector } from 'react-redux'
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
-function TicketList(props){
+function SurveyList(props){
   // The useFirestoreConnect() hook comes from react-redux-firebase.
   useFirestoreConnect([
-    { collection: 'tickets' }
+    { collection: 'surveys' }
   ]);
 
   // The useSelector() hook comes from react-redux.
   //state.firestore.ordered.tickets is the state slice we're grabbing from
-  const tickets = useSelector(state => state.firestore.ordered.tickets);
+  const surveys = useSelector(state => state.firestore.ordered.surveys);
 
-  if (isLoaded(tickets)) {
+  if (isLoaded(surveys)) {
   return (
     <React.Fragment>
       <hr/>
-      {tickets.map((ticket) => {
-        return <Ticket
-          whenTicketClicked = { props.onTicketSelection }
-          names={ticket.names}
-          location={ticket.location}
-          issue={ticket.issue}
-          formattedWaitTime={ticket.formattedWaitTime}
-          id={ticket.id}
-          key={ticket.id}/>
+      {surveys.map((survey) => {
+        return <Survey
+          whenSurveyClicked = { props.onSurveySelection }
+          names={survey.names}
+          location={survey.location}
+          issue={survey.issue}
+          formattedWaitTime={survey.formattedWaitTime}
+          id={survey.id}
+          key={survey.id}/>
       })}
     </React.Fragment>
     );
@@ -39,9 +39,9 @@ function TicketList(props){
   }
 }
 
-TicketList.propTypes = {
+SurveyList.propTypes = {
   // ticketList: PropTypes.object,
-  onTicketSelection: PropTypes.func
+  onSurveySelection: PropTypes.func
 };
 
-export default TicketList;
+export default SurveyList;

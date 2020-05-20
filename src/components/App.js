@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "./Header";
-import TicketControl from "./TicketControl";
+import SurveyControl from "./SurveyControl";
 import Counter from "./Counter"
 
 function App(){
   return ( 
     <React.Fragment>
       <Header />
-      <TicketControl />
+      <SurveyControl />
       <Counter />
     </React.Fragment>
   );

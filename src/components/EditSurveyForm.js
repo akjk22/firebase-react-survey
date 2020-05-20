@@ -3,32 +3,32 @@ import ReusableForm from "./ReusableForm";
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
 
-function EditNewTicket (props) {
+function EditNewSurvey (props) {
   const firestore = useFirestore();
-  const { ticket } = props;
+  const { survey } = props;
 
-  function handleEditTicketFormSubmission(event) {
+  function handleEditSurveyFormSubmission(event) {
     event.preventDefault();
-    props.onEditTicket();
+    props.onEditSurvey();
     const propertiesToUpdate = {
       names: event.target.names.value,
       location: event.target.location.value,
       issue: event.target.issue.value
     }
-    return firestore.update({collection: 'tickets', doc: ticket.id }, propertiesToUpdate)
+    return firestore.update({collection: 'surveys', doc: survey.id }, propertiesToUpdate)
   }
 
   return (
     <React.Fragment>
       <ReusableForm 
-        formSubmissionHandler={handleEditTicketFormSubmission}
-        buttonText="Update Ticket" />
+        formSubmissionHandler={handleEditSurveyFormSubmission}
+        buttonText="Update Survey" />
     </React.Fragment>
   );
 }
 
-EditNewTicket.propTypes = {
-  onEditTicket: PropTypes.func
+EditNewSurvey.propTypes = {
+  onEditSurvey: PropTypes.func
 };
 
-export default EditNewTicket;
+export default EditNewSurvey;
