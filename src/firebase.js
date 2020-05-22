@@ -14,6 +14,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();
 
+// var user = firebase.auth().currentUser;
+
+// user.updateEmail("user@example.com").then(function() {
+//   // Update successful.
+// }).catch(function(error) {
+//   // An error happened.
+// });
+
+// var newPassword = getASecureRandomPassword();
+
+// user.updatePassword(newPassword).then(function() {
+//   // Update successful.
+// }).catch(function(error) {
+//   // An error happened.
+// });
+
 export default firebase;
 
 

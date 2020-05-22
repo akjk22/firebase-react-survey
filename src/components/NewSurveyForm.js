@@ -22,9 +22,11 @@ function NewSurveyForm(props){
     //add() is the method to add a record to the database.
     return firestore.collection('surveys').add(
       {
-        names: event.target.names.value,
-        location: event.target.location.value, 
-        issue: event.target.issue.value,
+        // names: event.target.names.value,
+        // location: event.target.location.value, 
+        // issue: event.target.issue.value,
+        name: event.target.name.value,
+        question: event.target.question.value,
         timeOpen: firestore.FieldValue.serverTimestamp()
       }
     );
@@ -34,7 +36,7 @@ function NewSurveyForm(props){
     <React.Fragment>
       <ReusableForm 
         formSubmissionHandler={addSurveyToFirestore}
-        buttonText="Help!" />
+        buttonText="Add Survey" />
     </React.Fragment>
   );
 }

@@ -11,9 +11,11 @@ function EditNewSurvey (props) {
     event.preventDefault();
     props.onEditSurvey();
     const propertiesToUpdate = {
-      names: event.target.names.value,
-      location: event.target.location.value,
-      issue: event.target.issue.value
+      // names: event.target.names.value,
+      // location: event.target.location.value,
+      // issue: event.target.issue.value
+      name: event.target.name.value,
+      question: event.target.question.value
     }
     return firestore.update({collection: 'surveys', doc: survey.id }, propertiesToUpdate)
   }

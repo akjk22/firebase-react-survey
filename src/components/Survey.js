@@ -5,8 +5,12 @@ function Survey(props){
   return (
     <React.Fragment>
       <div onClick = {() => props.whenSurveyClicked(props.id)}>
-        <h3>{props.location} - {props.names}</h3>
-        <p><em>{props.issue}</em></p>
+        <h2>{props.name}</h2>
+        <p><em>{props.question}</em></p>
+        <input type='text' name='answer' placeholder='answer goes here'></input>
+        {/* <p><em>{props.question}</em></p>
+        <p><em>{props.question}</em></p>
+        <p><em>{props.question}</em></p> */}
         <p><em>{props.formattedWaitTime}</em></p>
       </div>
       <hr/>
@@ -15,9 +19,10 @@ function Survey(props){
 }
 
 Survey.propTypes = {
-  names: PropTypes.string,
-  location: PropTypes.string,
-  issue: PropTypes.string,
+  name: PropTypes.string,
+  // location: PropTypes.string,
+  // issue: PropTypes.string,
+  question: PropTypes.string,
   id: PropTypes.string,
   formattedWaitTime: PropTypes.string,
   whenSurveyClicked: PropTypes.func

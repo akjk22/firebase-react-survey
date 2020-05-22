@@ -21,9 +21,10 @@ function SurveyList(props){
       {surveys.map((survey) => {
         return <Survey
           whenSurveyClicked = { props.onSurveySelection }
-          names={survey.names}
-          location={survey.location}
-          issue={survey.issue}
+          name={survey.name}
+          question={survey.question}
+          // location={survey.location}
+          // issue={survey.issue}
           formattedWaitTime={survey.formattedWaitTime}
           id={survey.id}
           key={survey.id}/>
@@ -40,7 +41,6 @@ function SurveyList(props){
 }
 
 SurveyList.propTypes = {
-  // ticketList: PropTypes.object,
   onSurveySelection: PropTypes.func
 };
 

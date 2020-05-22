@@ -7,8 +7,11 @@ function SurveyDetail(props){
   return (
     <React.Fragment>
       <h1>Survey Detail</h1>
-      <h3>{survey.location} - {survey.names}</h3>
-      <p><em>{survey.issue}</em></p>
+      <h2>{survey.name}</h2>
+      <p><em>{survey.question}</em></p>
+      {/* <p><em>{survey.question}</em></p>
+      <p><em>{survey.question}</em></p>
+      <p><em>{survey.question}</em></p> */}
       <button onClick={ props.onClickingEdit }>Update Survey</button>
       <button onClick={()=> onClickingDelete(survey.id) }>Close Survey</button>
       <hr/>
