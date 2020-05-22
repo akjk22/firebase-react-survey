@@ -5,18 +5,16 @@ import Counter from "./Counter";
 import React, { Component } from 'react';
 import firebase from './../firebase.js';
 import Login from './Login';
-import SurveyList from './SurveyList';
-
-
-
+// import SurveyList from './SurveyList';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user:{},
+      user: null,
     }
+    this.authListener = this.authListener.bind(this);
   }
 
   componentDidMount() {
@@ -24,16 +22,17 @@ class App extends Component {
   }
 
   authListener() {
-  firebase.auth().onAuthStateChanged((user) => {
-    console.log(user);
-    if (user) {
-      this.setState({ user });
-    } else {
-      this.setState({ user: null  });
-    }
-  });
-}
-
+    fire.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        this.setState({ user });
+        localStorage.setItem('user', user.uid);
+      } else {
+        this.setState({ user: null });
+        localStorage.removeItem('user');
+      }
+    });
+  }
 
   render() {
     return ( 
@@ -42,7 +41,7 @@ class App extends Component {
         <SurveyControl />
         <Counter />
         <div>
-          {this.state.user ? (<SurveyList />) : (<Login />)}
+          {this.state.user ? (<App />) : (<Login />)}
         </div>
       </React.Fragment>
     );
